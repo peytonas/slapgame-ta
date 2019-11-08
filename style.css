@@ -1,0 +1,16 @@
+/* * {
+  border: 1px solid red;
+} */
+.bg {
+  background-image: url("https://www.pinclipart.com/picdir/big/149-1496181_rick-and-morty-portal-png-banner-transparent-portal.png");
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+.logo {
+  height: 200px;
+  width: auto;
+}
+.img {
+  margin: auto;
+}
