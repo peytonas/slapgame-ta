@@ -15,7 +15,7 @@ let enemy =
   health: 100,
   hits: 0,
   attacks: {
-    punch: 5,
+    zap: 5,
     kick: 10,
     scream: 1
   },
@@ -24,29 +24,45 @@ let enemy =
 let items = {
 
 }
+function zap(player) {
+  if (player.health > 0) {
+    player.health -= 5
+    // @ts-ignore
+    playerHealthBarElement.value -= 5;
+  }
+  player.hits++
+  console.log("ouch!")
+  update();
+}
 function scream(enemy) {
   if (enemy.health > 0) {
     enemy.health -= 1
-    enemy.hits++
-    console.log("weaker!")
+    // @ts-ignore
+    enemyHealthBarElement.value -= 1;
   }
+  enemy.hits++
+  console.log("weaker!")
   update();
 }
 function cry(enemy) {
   if (enemy.health > 0) {
     enemy.health -= 5
-    enemy.hits++
-    console.log("weaker!")
+    // @ts-ignore
+    enemyHealthBarElement.value -= 5;
   }
+  enemy.hits++
+  console.log("weaker!")
   update();
 }
+
+let playerHealthElement = document.getElementById("playerHealth")
+let playerHealthBarElement = document.getElementById("playerHealthBar")
+let playerHitElement = document.getElementById("playerHits")
+let enemyHealthElement = document.getElementById("enemyHealth")
+let enemyHealthBarElement = document.getElementById("enemyHealthBar")
+let enemyHitElement = document.getElementById("enemyHits")
+
 function update() {
-  let playerHealthElement = document.getElementById("playerHealth")
-  let playerHitElement = document.getElementById("playerHits")
-  let enemyHealthElement = document.getElementById("enemyHealth")
-  let enemyHitElement = document.getElementById("enemyHits")
-
-
   playerHealthElement.textContent = "Health: " + player.health.toString()
   playerHitElement.textContent = "Hits: " + player.hits.toString()
   enemyHealthElement.textContent = "Health: " + enemy.health.toString()
@@ -54,8 +70,12 @@ function update() {
 }
 function reset() {
   player.health = 100;
+  // @ts-ignore
+  playerHealthBarElement.value = 100;
   player.hits = 0;
   enemy.health = 100;
+  // @ts-ignore
+  enemyHealthBarElement.value = 100;
   enemy.hits = 0;
   update();
 }

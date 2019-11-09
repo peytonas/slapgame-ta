@@ -9,38 +9,44 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/79e2466ad0.js" crossorigin="anonymous"
     integrity="sha384-tCIa9x35rFwAnPYwDCoqImEiB9Ai31jfzeslK4Q53KZAXSFi24Px912eIpefo9Bj"></script>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
   <title>Slap Game</title>
 </head>
 
 <body class="container-fluid bg">
   <div class="row justify-content-around">
-    <div class="col-4 text-center">
-      <img class="logo" src="http://vgboxart.com/resources/logo/15998_pocket-mortys-prev.png" alt="pm">
+    <div class="col-4 text-center nes-container is-centered is-dark is-rounded">
+      <h1 class="nes-text is-warning">POCKET</h1>
+      <h1 class="nes-text is-primary">MORTYS</h1>
+      <!-- <img class="logo" src="http://vgboxart.com/resources/logo/15998_pocket-mortys-prev.png" alt="pm"> -->
     </div>
   </div>
   <div class="row justify-content-between">
     <div class="col-4 text-center" id="player">
       <img class="img" src="https://pocketmortys.net/images/assets/MortyDefaultDown_1.png" alt="001">
-      <div class="row justify-content-center">
-        <h3 id="playerHealth">HEALTH: 100</h3>
+      <div class="row justify-content-center ml-1">
+        <h5 id="playerHealth">HEALTH: 100</h5>
+        <progress id="playerHealthBar" class="nes-progress is-error" value="100" max="100"></progress>
       </div>
       <div class="row justify-content-center">
         <h6 id="playerHits">HITS: 0</h6>
       </div>
       <div class="row justify-content-center">
         <div class="col-4 text-center">
-          <button class="btn btn-danger" onclick="scream(enemy)">scream</button>
+          <button class="nes-btn is-error" onclick="scream(enemy), zap(player)">scream</button>
         </div>
         <div class="col-4 text-center">
-          <button class="btn btn-warning" onclick="cry(enemy)">cry</button>
+          <button class="nes-btn is-warning" onclick="cry(enemy)">cry</button>
         </div>
       </div>
     </div>
     <div class="col-4 text-center" id="enemy">
       <img class="img" src="https://pocketmortys.net/images/assets/MortyVoltamatronDown_1.png" alt="vm">
-      <div class="row justify-content-center">
-        <h3 id="enemyHealth">HEALTH: 100</h3>
+      <div class="row justify-content-center mr-1">
+        <h6 id="enemyHealth">HEALTH: 100</h6>
+        <progress id="enemyHealthBar" class="nes-progress is-error" value="100" max="100"></progress>
       </div>
       <div class="row justify-content-center">
         <h6 id="enemyHits">HITS: 0</h6>
@@ -49,7 +55,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-4 text-center">
-      <button class="btn btn-primary" onclick="reset()">RESET</button>
+      <button class="nes-btn is-primary" onclick="reset()">RESET</button>
     </div>
   </div>
 </body>
