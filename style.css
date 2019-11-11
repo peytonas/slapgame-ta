@@ -14,3 +14,10 @@
 .img {
   margin: auto;
 }
+.item-image {
+  height: 50px;
+  width: auto;
+}
+::-webkit-scrollbar {
+  display: none;
+}

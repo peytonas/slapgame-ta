@@ -4,7 +4,6 @@ let player = {
   hits: 0,
   attacks: {
     cry: 5,
-    kick: 10,
     scream: 1
   },
   items: []
@@ -16,17 +15,16 @@ let enemy =
   hits: 0,
   attacks: {
     zap: 5,
-    kick: 10,
-    scream: 1
   },
   items: []
 }
 let items = {
-
+  attackSeed: { name: "Attack Seed", modifier: 15 },
+  serum: { name: "Serum", modifier: 25 }
 }
 function zap(player) {
   if (player.health > 0) {
-    player.health -= 5
+    player.health -= enemy.attacks.zap
     // @ts-ignore
     playerHealthBarElement.value -= 5;
   }
@@ -36,7 +34,7 @@ function zap(player) {
 }
 function scream(enemy) {
   if (enemy.health > 0) {
-    enemy.health -= 1
+    enemy.health -= player.attacks.scream
     // @ts-ignore
     enemyHealthBarElement.value -= 1;
   }
@@ -46,13 +44,27 @@ function scream(enemy) {
 }
 function cry(enemy) {
   if (enemy.health > 0) {
-    enemy.health -= 5
+    enemy.health -= player.attacks.cry
     // @ts-ignore
     enemyHealthBarElement.value -= 5;
   }
   enemy.hits++
   console.log("weaker!")
   update();
+}
+function attackSeed(player) {
+  player.attacks.scream += items.attackSeed.modifier
+  player.attacks.cry += items.attackSeed.modifier
+  console.log("Attack up!");
+  update()
+}
+function serum(player) {
+  if (player.health <= 50) {
+    player.health += 20
+    playerHealthBarElement.value += 20
+    console.log("Health up!");
+    update()
+  }
 }
 
 let playerHealthElement = document.getElementById("playerHealth")
@@ -63,15 +75,18 @@ let enemyHealthBarElement = document.getElementById("enemyHealthBar")
 let enemyHitElement = document.getElementById("enemyHits")
 
 function update() {
-  playerHealthElement.textContent = "Health: " + player.health.toString()
-  playerHitElement.textContent = "Hits: " + player.hits.toString()
-  enemyHealthElement.textContent = "Health: " + enemy.health.toString()
-  enemyHitElement.textContent = "Hit: " + enemy.hits.toString()
+  playerHealthElement.textContent = "HEALTH: " + player.health.toString()
+  playerHitElement.textContent = "HITS: " + player.hits.toString()
+  enemyHealthElement.textContent = "HEALTH: " + enemy.health.toString()
+  enemyHitElement.textContent = "HITS: " + enemy.hits.toString()
 }
 function reset() {
   player.health = 100;
   // @ts-ignore
   playerHealthBarElement.value = 100;
+  player.attacks.cry = 5
+  player.attacks.scream = 1
+  enemy.attacks.zap = 5
   player.hits = 0;
   enemy.health = 100;
   // @ts-ignore

@@ -17,10 +17,9 @@
 
 <body class="container-fluid bg">
   <div class="row justify-content-around">
-    <div class="col-4 text-center nes-container is-centered is-dark is-rounded">
-      <h1 class="nes-text is-warning">POCKET</h1>
-      <h1 class="nes-text is-primary">MORTYS</h1>
-      <!-- <img class="logo" src="http://vgboxart.com/resources/logo/15998_pocket-mortys-prev.png" alt="pm"> -->
+    <div class="col-6 text-center nes-container is-centered is-dark is-rounded">
+      <h3 class="nes-text is-warning">WELCOME TO</h3>
+      <h1 class="nes-text is-primary">THE MORTYDOME</h1>
     </div>
   </div>
   <div class="row justify-content-between">
@@ -33,12 +32,12 @@
       <div class="row justify-content-center">
         <h6 id="playerHits">HITS: 0</h6>
       </div>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mb-2">
         <div class="col-4 text-center">
           <button class="nes-btn is-error" onclick="scream(enemy), zap(player)">scream</button>
         </div>
         <div class="col-4 text-center">
-          <button class="nes-btn is-warning" onclick="cry(enemy)">cry</button>
+          <button class="nes-btn is-warning" onclick="cry(enemy), zap(player)">cry</button>
         </div>
       </div>
     </div>
@@ -51,9 +50,30 @@
       <div class="row justify-content-center">
         <h6 id="enemyHits">HITS: 0</h6>
       </div>
+      <div class="row justify-content-center">
+
+      </div>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-left">
+    <div class="col-6">
+      <button class="nes-btn is-success"><img src="https://pocketmortys.net/images/items/MortyManipulatorChip.png"
+          alt="" style="height: 40px; width: 40px"></button>
+      <button class="nes-btn is-success" onclick="attackSeed(player)"><img
+          src="https://pocketmortys.net/images/items/AttackMegaSeed.png" alt=""
+          style="height: 40px; width: 40px"></button>
+      <button class="nes-btn is-success" onclick="serum(player)"><img
+          src="https://pocketmortys.net/images/items/Serum.png" alt="" style="height: 40px; width: 40px"></button>
+      <button class="nes-btn is-success"><img src="https://pocketmortys.net/images/items/LovePotion.png" alt=""
+          style="height: 40px; width: 40px"></button>
+      <button class="nes-btn is-success"><img src="https://pocketmortys.net/images/items/ButterRobot.png" alt=""
+          style="height: 40px; width: 40px"></button>
+      <button class="nes-btn is-success"><img src="https://pocketmortys.net/images/items/IQEnhancingHelmet.png" alt=""
+          style="height: 40px; width: 40px"></button>
+
+    </div>
+  </div>
+  <div class="row justify-content-center pt-2 mb-2">
     <div class="col-4 text-center">
       <button class="nes-btn is-primary" onclick="reset()">RESET</button>
     </div>
