@@ -4,7 +4,8 @@ let player = {
   hits: 0,
   attacks: {
     cry: 5,
-    scream: 1
+    scream: 1,
+    fetalPosition: 15
   },
   items: []
 }
@@ -48,6 +49,11 @@ function cry(enemy) {
   }
   enemy.hits++
   update();
+}
+function fetalPosition(player) {
+  player.health += player.attacks.fetalPosition;
+  playerHealthBarElement.value += player.attacks.fetalPosition;
+
 }
 function attackMegaSeed(player) {
   let btn = document.getElementById("ams")
