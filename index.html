@@ -57,18 +57,29 @@
   </div>
   <div class="row justify-content-left">
     <div class="col-6">
-      <button class="nes-btn is-success"><img src="https://pocketmortys.net/images/items/MortyManipulatorChip.png"
-          alt="" style="height: 40px; width: 40px"></button>
-      <button class="nes-btn is-success" onclick="attackSeed(player)"><img
+      <button id="mmc" class="nes-btn is-success disabled"><img
+          src="https://pocketmortys.net/images/items/MortyManipulatorChip.png" alt=""
+          style="height: 40px; width: 40px"></button>
+      <button id="ams" class="nes-btn is-success disabled" onclick="attackMegaSeed(player)"><img
           src="https://pocketmortys.net/images/items/AttackMegaSeed.png" alt=""
           style="height: 40px; width: 40px"></button>
-      <button class="nes-btn is-success" onclick="serum(player)"><img
+      <button id="ser" class="nes-btn is-success disabled" onclick="serum(player)"><img
           src="https://pocketmortys.net/images/items/Serum.png" alt="" style="height: 40px; width: 40px"></button>
-      <button class="nes-btn is-success"><img src="https://pocketmortys.net/images/items/LovePotion.png" alt=""
-          style="height: 40px; width: 40px"></button>
-      <button class="nes-btn is-success"><img src="https://pocketmortys.net/images/items/ButterRobot.png" alt=""
-          style="height: 40px; width: 40px"></button>
-      <button class="nes-btn is-success"><img src="https://pocketmortys.net/images/items/IQEnhancingHelmet.png" alt=""
+      <button id="lp" class="nes-btn is-success disabled" onclick="lovePotion(enemy)"><img
+          src="https://pocketmortys.net/images/items/LovePotion.png" alt="" style="height: 40px; width: 40px"></button>
+      <audio id="pass-butter">
+        <source src="rick-passbutter.mp3" type="audio/mpeg"></audio>
+      <button id="br" class="nes-btn is-success"
+        onclick="document.getElementById('dialog-rounded').showModal(); butterRobot()"><img
+          src="https://pocketmortys.net/images/items/ButterRobot.png" alt="" style="height: 40px; width: 40px"></button>
+      <dialog class="nes-dialog is-rounded" id="dialog-rounded">
+        <form method="dialog">
+          <p>What is my purpose?</p>
+          <p class="text-center">[press esc to exit]</p>
+        </form>
+      </dialog>
+      <button id="ieh" class="nes-btn is-success disabled"><img
+          src="https://pocketmortys.net/images/items/IQEnhancingHelmet.png" alt=""
           style="height: 40px; width: 40px"></button>
 
     </div>

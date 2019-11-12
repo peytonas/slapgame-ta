@@ -19,52 +19,76 @@ let enemy =
   items: []
 }
 let items = {
-  attackSeed: { name: "Attack Seed", modifier: 15 },
-  serum: { name: "Serum", modifier: 25 }
+  attackMegaSeed: { name: "Attack Mega Seed", modifier: 15 },
+  serum: { name: "Serum", modifier: 20 }
 }
 function zap(player) {
   if (player.health > 0) {
     player.health -= enemy.attacks.zap
     // @ts-ignore
-    playerHealthBarElement.value -= 5;
+    playerHealthBarElement.value -= enemy.attacks.zap;
   }
   player.hits++
-  console.log("ouch!")
   update();
 }
 function scream(enemy) {
   if (enemy.health > 0) {
     enemy.health -= player.attacks.scream
     // @ts-ignore
-    enemyHealthBarElement.value -= 1;
+    enemyHealthBarElement.value -= player.attacks.scream;
   }
   enemy.hits++
-  console.log("weaker!")
   update();
 }
 function cry(enemy) {
   if (enemy.health > 0) {
     enemy.health -= player.attacks.cry
     // @ts-ignore
-    enemyHealthBarElement.value -= 5;
+    enemyHealthBarElement.value -= player.attacks.cry;
   }
   enemy.hits++
-  console.log("weaker!")
   update();
 }
-function attackSeed(player) {
-  player.attacks.scream += items.attackSeed.modifier
-  player.attacks.cry += items.attackSeed.modifier
-  console.log("Attack up!");
+function attackMegaSeed(player) {
+  let btn = document.getElementById("ams")
+  if (player.hits > 10) {
+    btn.removeAttribute("disabled")
+    player.attacks.scream += items.attackMegaSeed.modifier
+    player.attacks.cry += items.attackMegaSeed.modifier
+  } else {
+    player.attacks.scream = 1
+    player.attacks.cry = 5
+  }
   update()
 }
 function serum(player) {
-  if (player.health <= 50) {
-    player.health += 20
-    playerHealthBarElement.value += 20
-    console.log("Health up!");
-    update()
+  let btn = document.getElementById("ser")
+  if (player.health <= 35) {
+    btn.removeAttribute("disabled")
+    player.health += items.serum.modifier
+    player.hits -= items.serum.modifier
+    playerHealthBarElement.value += items.serum.modifier
+  } else {
+    player.health = player.health
   }
+  update()
+}
+function lovePotion(enemy) {
+  let btn = document.getElementById("lp")
+  if (player.hits >= 15) {
+    btn.removeAttribute("disabled")
+    enemy.attacks.zap = 0;
+    console.log("WEAKENED!");
+  } else {
+    enemy.attacks.zap = 5
+  }
+  update();
+}
+function butterRobot() {
+  let btn = document.getElementById("pass-butter")
+  // @ts-ignore
+  btn.play()
+
 }
 
 let playerHealthElement = document.getElementById("playerHealth")
@@ -93,4 +117,10 @@ function reset() {
   enemyHealthBarElement.value = 100;
   enemy.hits = 0;
   update();
+}
+function gameOver() {
+  if (player.health <= 0) {
+    alert("YOU LOSE")
+    reset();
+  }
 }
